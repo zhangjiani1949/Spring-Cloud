@@ -1,7 +1,9 @@
 package com.heaven1949.springcloud.product.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -13,6 +15,8 @@ import java.math.BigDecimal;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
 
     /**
@@ -22,14 +26,14 @@ public class ProductDTO {
     /**
      * 商品名称
      */
-    private String productName;
-    /**
-     * 商品种类
-     */
-    private String productType;
+    private String name;
     /**
      * 单价
      */
-    private BigDecimal productPrice;
+    private BigDecimal price;
+    /**
+     * 库存
+     */
+    private Integer stock;
 
 }

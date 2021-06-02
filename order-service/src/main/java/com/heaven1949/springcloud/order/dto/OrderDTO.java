@@ -1,10 +1,12 @@
 package com.heaven1949.springcloud.order.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * OrderDTO
@@ -14,6 +16,8 @@ import java.util.List;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDTO {
 
     /**
@@ -21,20 +25,24 @@ public class OrderDTO {
      */
     private Long id;
     /**
+     * 用户id
+     */
+    private Long userId;
+    /**
      * 订单编号
      */
     private String orderNo;
     /**
-     * 订单状态（1-未支付；2-已支付；3-已发货；4-已完成）
+     * 商品名称
      */
-    private String orderStatus;
+    private String productName;
+    /**
+     * 订单总价
+     */
+    private BigDecimal totalPrice;
     /**
      * 订单创建时间
      */
-    private Date createTime;
-    /**
-     * 订单明细
-     */
-    private List<OrderDetailDTO> details;
+    private LocalDateTime createTime;
 
 }
