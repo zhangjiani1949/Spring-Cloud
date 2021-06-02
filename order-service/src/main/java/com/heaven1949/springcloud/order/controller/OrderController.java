@@ -42,7 +42,7 @@ public class OrderController {
                 Map<String, Object> map = new HashMap<>(2);
                 map.put("userId", Thread.currentThread().getId());
                 map.put("productId", i);
-                String res = HttpUtil.get("http://localhost:9001/api/v1/order/save", map);
+                String res = HttpUtil.get("http://localhost:6001/apigateway/order/api/v1/order/save", map);
                 System.out.println(res);
             }
         });

@@ -1,39 +1,52 @@
-# Spring Cloud案例
+# SpringCloud学习项目
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+有关该SpringCloud前面写了几篇博客作为该项目的详细说明。
 
-#### 软件架构
-软件架构说明
+1、[SpringCloud(2)---SpringCloud入门篇](https://www.cnblogs.com/qdhxhz/p/9357357.html)
 
+2、[SpringCloud(3)---Eureka服务注册与发现](https://www.cnblogs.com/qdhxhz/p/9357502.html)
 
-#### 安装教程
+3、[SpringCloud(4)---Ribbon服务调用，源码分析](https://www.cnblogs.com/qdhxhz/p/9568481.html)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+4、[SpringCloud(5)---Feign服务调用](https://www.cnblogs.com/qdhxhz/p/9571600.html)
 
-#### 使用说明
+5、[SpringCloud(6)---熔断降级理解、Hystrix实战](https://www.cnblogs.com/qdhxhz/p/9581440.html)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+6、[SpringCloud(7)---网关概念、Zuul项目搭建](https://www.cnblogs.com/qdhxhz/p/9594521.html)
 
-#### 参与贡献
+7、[SpringCloud(8)---zuul权限校验、接口限流](https://www.cnblogs.com/qdhxhz/p/9601170.html)
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+8、[SpringCloud(9)---mysql实现配置中心](https://www.cnblogs.com/qdhxhz/p/9624386.html)
 
 
-#### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 一、项目概述
+
+#### 1、技术架构
+
+项目总体技术选型
+
+```
+SpringBoot + Maven +spring-cloud+ mysql + Redis + lombok
+```
+
+#### 2、项目整体结构
+
+```makefile
+eureka          # 注册中心
+config-service  # 配置中心服务
+zuul-service    # 网关服务
+service-produce # 商品服务
+service-order   # 订单服务
+```
+
+项目的启动顺序 最好也安装上面的顺序启动。
+
+#### 3、测试
+
+输入：**localhost:7001**  如果上面服务都出现那恭喜你 启动成功！
+
+![](https://img2018.cnblogs.com/blog/1090617/201907/1090617-20190712190945077-771945780.png)
+
+<br>
+

@@ -12,6 +12,7 @@
         <module>eureka-server</module>
         <module>product-service</module>
         <module>order-service</module>
+        <module>zuul-gateway</module>
     </modules>
 
     <properties>
