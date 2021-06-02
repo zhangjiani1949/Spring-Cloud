@@ -1,5 +1,8 @@
 package com.heaven1949.springcloud.order.controller;
 
+import cn.hutool.core.thread.ConcurrencyTester;
+import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.http.HttpUtil;
 import com.heaven1949.springcloud.order.service.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.lang.StringUtils;
@@ -32,18 +35,18 @@ public class OrderController {
         this.redisTemplate = redisTemplate;
     }
 
-    /**
-     * 下单
-     * 当调用微服务出现异常会降级到saveOrderFail方法中
-     *
-     * @param userId    用户id
-     * @param productId 产品id
-     * @return
-     */
-    @GetMapping("/save")
-    @HystrixCommand(fallbackMethod = "saveOrderFail")
-    public Object selectProductList(HttpServletRequest request, @RequestParam Long userId, @RequestParam Long productId) {
-        return orderService.save(userId, productId);
+    public static void main(String[] args) {
+        // 模拟100个用户并发请求
+        ConcurrencyTester tester = ThreadUtil.concurrencyTest(100, () -> {
+            for (int i = 1; i <= 4; i++) {
+                Map<String, Object> map = new HashMap<>(2);
+                map.put("userId", Thread.currentThread().getId());
+                map.put("productId", i);
+                String res = HttpUtil.get("http://localhost:9001/api/v1/order/save", map);
+                System.out.println(res);
+            }
+        });
+        System.out.println("耗时：" + tester.getInterval());
     }
 
     /**
@@ -75,6 +78,20 @@ public class OrderController {
         msg.put("code", -1);
         msg.put("msg", "抢购人数太多，请稍后重试");
         return msg;
+    }
+
+    /**
+     * 下单
+     * 当调用微服务出现异常会降级到saveOrderFail方法中
+     *
+     * @param userId    用户id
+     * @param productId 产品id
+     * @return
+     */
+    @GetMapping("/save")
+    @HystrixCommand(fallbackMethod = "saveOrderFail")
+    public Object save(HttpServletRequest request, @RequestParam Long userId, @RequestParam Long productId) {
+        return orderService.save(userId, productId);
     }
 
 }
